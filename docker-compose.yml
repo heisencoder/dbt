@@ -15,9 +15,9 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        # Run `make .env` to set $USER_ID and $GROUP_ID
-        USER_ID: ${USER_ID}
-        GROUP_ID: ${GROUP_ID}
+        # Run `make .env` to set $USER_ID and $GROUP_ID for Linux
+        USER_ID: ${USER_ID:-0}
+        GROUP_ID: ${GROUP_ID:-0}
     command: "/root/.virtualenvs/dbt/bin/pytest"
     env_file:
       - ./test.env
